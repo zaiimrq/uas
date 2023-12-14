@@ -1,0 +1,57 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.header {
+    background-color: #4a4cc7;
+    color: #ffffff;
+    padding: 100px 0;
+}
+
+.header h1 {
+    font-size: 3em;
+}
+
+.dns-section {
+    background-color: #eff4f9;
+    padding: 80px 0;
+}
+
+.features {
+    /* background-color:; */
+    padding: 80px 0;
+}
+
+.feature-box {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.quotes-section {
+    background-color: #ffc939;
+    padding: 50px 0;
+}
+
+.blockquote {
+    font-size: 1.5em;
+}
+
+.contact {
+    padding: 80px 0;
+}
+
+.contact img {
+    max-width: 80%;
+    height: auto;
+}
+
+.footer {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 30px 0;
+    text-align: center;
+}

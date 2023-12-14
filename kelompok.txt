@@ -1,0 +1,14 @@
+
+-- Description --
+Aplikasi penilaian mahasiswa, dibuat tanpa framework namun menerapkan konsep MVC.
+
+-- Spesifikasi --
+a. PHP 8.1
+b. Koneksi database menggunakan PDO
+c. Database collation utf8mb4_0900_ai_c
+
+-- Kelompok --
+1. Ajeng Kalista Rahma      |          | Software Arcitecture & Frontend Developer
+2. Claudia Putri Muwa       |          | UI / UX Designer & IT Support
+3. Slamet Shariful Zaidin   | 22641001 | Backend Developer
+4. Farhan Aritama           |          | UI / UX Designer & IT Support

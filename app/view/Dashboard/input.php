@@ -24,32 +24,28 @@
 			<?php if (!(is_null($model["data"]))) : ?>
 				<?php foreach ($model["data"] as $data) : ?>
 					<tr>
-						<form action="<?= BASEURL ?>/dashboard/input/doInput?npm=<?= $_GET["npm"] ?>" method="POST">
-							<td><?= $data["kode_mk"] ?></td>
-							<td><?= $data["nama_mk"] ?></td>
-							<td><?= $data["sks"] ?></td>
+						<td><?= $data["kode_mk"] ?></td>
+						<td><?= $data["nama_mk"] ?></td>
+						<td><?= $data["sks"] ?></td>
+
+						<form action="<?= BASEURL ?>/dashboard/input/doInput?npm=<?= $_GET["npm"] ?>" method="POST" id="formNilai">
 							<td>
 								<select name="<?= $data["kode_mk"] ?>" data-mk="<?= $data["kode_mk"] ?>">
 									<option></option>
-									<option value="A">A</option>
-									<option value="B">B</option>
-									<option value="C">C</option>
-									<option value="D">D</option>
-									<option value="E">E</option>
+									<?php foreach ($model["option"] as $option) : ?>
+										<option <?= ($data['nilai'] ?? null) == $option ? 'selected' : false ?> value="<?= $option ?>"><?= $option ?></option>
+									<?php endforeach; ?>
 								</select>
 							</td>
-							<td>
-								<?php foreach ($model["check"] as $key => $value) : ?>
-									<?php if ($key == $data["kode_mk"]) : ?>
-										<input type="text" value="<?= $value[1] ?>" readonly data-id="<?= $data["kode_mk"] ?>">
-									<?php endif; ?>
-								<?php endforeach; ?>
-							</td>
+						</form>
+						<td>
+							<input class="text-white <?= $data["status"] == "" ? false : ($data["status"] == "Lulus" ?  "bg-success" : ($data["status"] == "Mengulang" ? "bg-warning" : "bg-danger")) ?>" type="text" value="<?= $data['status'] ?? null ?>" readonly data-id="<?= $data["kode_mk"] ?>">
+						</td>
 					</tr>
 				<?php endforeach; ?>
 			<?php endif; ?>
 		</tbody>
 	</table>
-	<input type="submit" class="btn btn-primary" value="Submit Nilai">
-	</form>
+	<input type="submit" form="formNilai" class="btn btn-primary" value="Submit Nilai">
+
 </div>

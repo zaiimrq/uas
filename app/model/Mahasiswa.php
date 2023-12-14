@@ -30,18 +30,22 @@ class Mahasiswa
         }
     }
 
-    public function inputNilaiDns(array $data)
+    public function input(array $data): ?array
     {
-        $query = "SELECT tb_matkul.kode_mk, tb_matkul.nama_mk, tb_matkul.sks
-                    FROM tb_matkul
-                    WHERE tb_matkul.kode_jurusan = ?";
+
         try {
+            $query = "SELECT tb_matkul.kode_mk, tb_matkul.nama_mk, tb_matkul.sks, tb_dns.nilai,
+                        CASE 
+                            WHEN nilai IN ('A', 'B', 'C') THEN 'Lulus'
+                            WHEN nilai = 'D' THEN 'Mengulang'
+                            WHEN nilai = 'E' THEN 'Tidak Lulus'
+                        END AS status
+                        FROM tb_matkul LEFT JOIN tb_dns ON tb_matkul.kode_mk = tb_dns.kode_mk
+                        WHERE tb_matkul.kode_jurusan = ?";
+
             $statement = $this->pdo->prepare($query);
             $statement->execute([$data["jurusan"]]);
-
-            if ($row = $statement->fetchAll(PDO::FETCH_ASSOC)) {
-                return $row;
-            }
+            return $statement->fetchAll(PDO::FETCH_ASSOC) ?? null;
         } finally {
             $statement->closeCursor();
         }
@@ -58,7 +62,7 @@ class Mahasiswa
                 $npm
             ]);
 
-            if ($row = $check->fetch()) {
+            if ($check->fetch()) {
                 $statement = $this->pdo->prepare("UPDATE tb_dns SET nilai = ? WHERE kode_mk = ? AND npm = ?");
                 $statement->execute([
                     $nilai,
@@ -78,27 +82,5 @@ class Mahasiswa
         $this->pdo->commit();
 
         return true;
-    }
-
-    public function checkStatusNilai($data)
-    {
-        $query = "SELECT kode_mk, nilai,
-                    CASE 
-                        WHEN nilai IN ('A', 'B', 'C') THEN 'Lulus'
-                        ELSE 'Tidak Lulus'
-                    END AS status
-                    FROM tb_dns WHERE npm = ?";
-        $statement = $this->pdo->prepare($query);
-        $statement->execute([
-            $data["npm"],
-        ]);
-
-        try {
-            if ($row = $statement->fetchAll(PDO::FETCH_ASSOC)) {
-                return $row;
-            }
-        } finally {
-            $statement->closeCursor();
-        }
     }
 }

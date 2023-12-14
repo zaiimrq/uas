@@ -13,8 +13,8 @@ use Tugas\core\Route; ?>
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
     <link href="<?= BASEURL ?>/assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- DataTables CSS -->
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css"> -->
-    <link rel="stylesheet" type="text/css" href="/assets/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="<?= BASEURL ?>/assets/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>/assets/css/style.css">
     <style>
         .tabel-container,
         .nilai-container {
