@@ -2,6 +2,8 @@
 
 
 namespace Tugas\model;
+
+use PDO;
 use Tugas\database\Database;
 
 class Home
@@ -11,16 +13,16 @@ class Home
     {
         $this->pdo = Database::getConnection();
     }
-    
-    public function findDns()
+
+    public function findDns($npm)
     {
         try {
             $statement = $this->pdo->prepare("SELECT tb_mhs.npm, tb_mhs.nama, tb_mhs.kode_jurusan, tb_jurusan.nama_jurusan AS jurusan
                                                 FROM tb_mhs
-                                                JOIN tb_jurusan ON tb_mhs.kode_jurusan = tb_jurusan.kode_jurusan WHERE tb_mhs.npm = $");
+                                                LEFT JOIN tb_jurusan ON tb_mhs.kode_jurusan = tb_jurusan.kode_jurusan WHERE tb_mhs.npm = ?");
             $statement->execute();
-            
-            if ($row = $statement->fetchAll()) {
+
+            if ($row = $statement->fetchAll(PDO::FETCH_ASSOC)) {
                 return $row;
             }
         } finally {
