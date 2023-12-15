@@ -19,6 +19,7 @@
 					<td><?= $mhs["nama"] ?></td>
 					<td><?= $mhs["jurusan"] ?></td>
 					<td class="text-center">
+						<a href="<?= BASEURL ?>/dashboard/input?npm=<?= $mhs["npm"] ?>&jurusan=<?= $mhs["kode_jurusan"] ?>"><button type="button" class="btn btn-warning"><img src="../img/sign-in.png" style="width:20px;height:auto;"> VIEW</button></a>
 						<a href="<?= BASEURL ?>/dashboard/input?npm=<?= $mhs["npm"] ?>&jurusan=<?= $mhs["kode_jurusan"] ?>" class="btn btn-warning">Input</a>
 						<a href="<?= BASEURL ?>/dashboard/lihat" class="btn btn-success">Lihat</a>
 					</td>

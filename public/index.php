@@ -9,6 +9,7 @@ use Tugas\core\Route;
 
 
 Route::add("GET", "/", [HomeController::class, 'index']);
+Route::add("POST", "/", [HomeController::class, 'search']);
 Route::add("GET", "/dashboard", [DashboardController::class, 'index']);
 Route::add("GET", "/dashboard/input", [DashboardController::class, 'input']);
 Route::add("POST", "/dashboard/input/doInput", [DashboardController::class, 'doInput']);
