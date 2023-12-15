@@ -8,10 +8,10 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <form>
+                <form action="<?= BASEURL ?>/home/search?npm=<?= $mhs["npm"]; ?>" method="GET">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Masukkan NPM">
-                        <button type="button" class="btn btn-warning">Cari</button>
+                        <input type="text" name="search" class="form-control" placeholder="Masukkan NPM">
+                        <button type="submit" class="btn btn-warning">Cari</button>
                     </div>
                 </form>
             </div>
