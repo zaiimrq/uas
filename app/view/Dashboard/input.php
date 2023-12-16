@@ -22,30 +22,33 @@
 		</thead>
 		<tbody>
 			<?php if (!(is_null($model["data"]))) : ?>
-				<?php foreach ($model["data"] as $data) : ?>
-					<tr>
-						<td><?= $data["kode_mk"] ?></td>
-						<td><?= $data["nama_mk"] ?></td>
-						<td><?= $data["sks"] ?></td>
-
-						<form action="<?= BASEURL ?>/dashboard/input/doInput?npm=<?= $_GET["npm"] ?>" method="POST" id="formNilai">
+				<form action="<?= BASEURL ?>/dashboard/input/doInput?npm=<?= $_GET["npm"] ?>" method="POST" id="formNilai">
+					<?php foreach ($model["data"] as $data) : ?>
+						<tr>
+							<td><?= $data["kode_mk"] ?></td>
+							<td><?= $data["nama_mk"] ?></td>
+							<td><?= $data["sks"] ?></td>
 							<td>
-								<select name="<?= $data["kode_mk"] ?>" data-mk="<?= $data["kode_mk"] ?>">
+								<select name="<?= $data["kode_mk"] ?>" <?= $data['nilai'] !== null ? 'disabled' : false ?> required>
 									<option></option>
 									<?php foreach ($model["option"] as $option) : ?>
 										<option <?= ($data['nilai'] ?? null) == $option ? 'selected' : false ?> value="<?= $option ?>"><?= $option ?></option>
 									<?php endforeach; ?>
 								</select>
 							</td>
-						</form>
-						<td>
-							<input class="text-white <?= $data["status"] == "" ? false : ($data["status"] == "Lulus" ?  "bg-success" : ($data["status"] == "Mengulang" ? "bg-warning" : "bg-danger")) ?>" type="text" value="<?= $data['status'] ?? null ?>" readonly data-id="<?= $data["kode_mk"] ?>">
-						</td>
-					</tr>
-				<?php endforeach; ?>
+							<td>
+								<input class="text-white <?= $data["status"] == "" ? false : ($data["status"] == "Lulus" ?  "bg-success" : ($data["status"] == "Mengulang" ? "bg-warning" : "bg-danger")) ?>" type="text" value="<?= $data['status'] ?? null ?>" readonly data-id="<?= $data["kode_mk"] ?>">
+							</td>
+						</tr>
+					<?php endforeach; ?>
+				</form>
 			<?php endif; ?>
 		</tbody>
 	</table>
-	<input type="submit" form="formNilai" class="btn btn-primary" value="Submit Nilai">
-
+	<?php foreach ($model["data"] as $data) : ?>
+		<?php if ($data['nilai'] == null) : ?>
+			<input type="submit" form="formNilai" class="btn btn-primary" value="Submit Nilai">
+		<?php break;
+		endif; ?>
+	<?php endforeach; ?>
 </div>
