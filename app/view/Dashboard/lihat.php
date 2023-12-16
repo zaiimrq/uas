@@ -1,23 +1,28 @@
 <div class="lihat-container">
 
 <ol class="breadcrumb">
-    <li><a href="dashboard.php">Dashboard</a> / </li>
+    <li><a href="<?= BASEURL ?>/dashboard">Dashboard</a> / </li>
     <li class="active">View DNS</li>        
 </ol>
 
+
+<?php if (isset($_GET["npm"])) : ?>
+    <?php if ($model['data'] !== null) : ?>
+
 <div class="mt-4 p-5 bg-light rounded">
   <h1>DAFTAR NILAI SEMESTER</h1>
-  <p>No DNS : show id_dns</p>
+  <p>No DNS : <?= $model["data"][0]["id_dns"] ?></p>
   <p>Tahun Ajaran : 2023 - Ganjil</p>
   <hr>
   <b>
-  <p>NAMA MAHASISWA     : show nama</p>
-  <p>N.P.M              : show npm</p>
-  <p>JURUSAN            : show jurusan</p>
+  <p>NAMA MAHASISWA     : <?= $model["data"][0]["nama"] ?></p>
+  <p>N.P.M              : <?= $model["data"][0]["npm"] ?></p>
+  <p>JURUSAN            : <?= $model["data"][0]["jurusan"] ?></p>
 </b>
 <div class="d-flex justify-content-end">
-  <a href="nilai.php" class="btn btn-success"><b>INPUT NILAI</b></a>
+  <a href="<?= BASEURL ?>/dashboard/lihat?npm=<?= $mhs["npm"] ?>" class="btn btn-success"><b>INPUT NILAI</b></a>
 </div>
+
 <table id="" class="table table-striped table-bordered mt-3" cellspacing="0" width="90%" style="text-align:center;" >
 	<thead>
 		<tr>
@@ -31,19 +36,33 @@
 		</tr>
 	</thead>
 	<tbody>
+		<?php $i=1;?>
+		<?php foreach ($model['data'][1] as $data) : ?>
+		<?php if ($data['nilai'] !== null) : ?>
+
 		<tr>
-			<td scope="row">1</td> 
-			<td>IF12348</td>
-			<td>PEMROGRAMAN BERORIENTASI OBJEK</td>
-			<td>3</td>
-			<td>A</td>
-			<td>L</td>
-			<td><button class="btn btn-warning"><img src="../img/edit.png" style="width:20px;height:auto;"></button></td>
-			<td><button class="btn btn-danger"><img src="../img/delete.png" style="width:20px;height:auto;"></button></td>
+			
+			<td scope="row">$i++</td> 
+			<td><?= $data["kode_mk"] ?></td>
+			<td><?= $data["nama_mk"] ?></td>
+			<td><?= $data["sks"] ?></td>
+			<td><?= $data["nilai"] ?></td>
+			<td><?= $data["status"] ?></td>
+			<td><button class="btn btn-warning"><img src="<?= BASEURL ?>/assets/image/edit.png" style="width:20px;height:auto;"></button></td>
+			<td><button class="btn btn-danger"><img src="<?= BASEURL ?>/assets/image/delete.png" style="width:20px;height:auto;"></button></td>
+		</tr>
+	
+		<?php endif; ?>
+
+		<?php endforeach;?>
+		<tr>
+			<td colspan="8">Tidak Ada Data Ditemukan</td>
 		</tr>
 	</tbody>
 </table>
-</div>
 
+    <?php endif; ?>
+<?php endif; ?>
+</div>
 </div>
 <br>

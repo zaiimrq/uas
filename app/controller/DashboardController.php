@@ -45,6 +45,11 @@ class DashboardController
 
     public function lihat()
     {
-        View::render("Dashboard/lihat");
+        $data = $this->mahasiswa->lihat($_GET['npm']);
+
+        View::render("dashboard/lihat", [
+            "title" => "Dashboard | Lihat Nilai",
+            "data" => $data
+        ]);
     }
 }

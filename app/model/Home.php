@@ -17,8 +17,6 @@ class Home
     public function findDns($npm)
     {
 
-
-
         $statement = $this->pdo->prepare("SELECT npm, nama FROM tb_mhs WHERE npm = ?");
         $statement->execute([$npm]);
 
@@ -37,7 +35,6 @@ class Home
 
                 $this->pdo->commit();
                 if ($dns = $statement->fetchAll(PDO::FETCH_ASSOC)) {
-
 
                     return [
                         $mhs,

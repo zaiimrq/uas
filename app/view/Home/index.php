@@ -1,6 +1,7 @@
 <!-- Header Section -->
 <div class="header text-center">
     <div class="container">
+        <button class="btn btn-warning "><a style="text-decoration:none; color:black;" href="<?= BASEURL ?>/dashboard">Dashboard Admin</a></button>
         <h1>Cek DNS Mahasiswa Online</h1>
         <p>Selamat datang Mahasiswa Universitas Yapis Papua !</p><br>
         <p>Masukkan NPM Anda untuk melihat Daftar Nilai Semester terkini</p>
@@ -141,7 +142,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <img src="img/vektor.svg" alt="Gambar">
+                <img src="<?= BASEURL ?>/assets/image/vektor.svg" alt="Gambar">
             </div>
             <div class="col-md-6">
                 <h2>Cek Nilai Anda Dengan Mudah</h2>
