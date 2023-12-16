@@ -16,10 +16,12 @@ class HomeController
     }
     public function index()
     {
-        $data = $this->model->findDns($_GET['search'] ?? '');
+        if (isset($_GET["search"]) && $_GET["search"] !== '') {
+            $data = $this->model->findDns($_GET['search']);
+        }
         View::render("Home/index", [
             "title" => "Home | Search DNS Online",
-            "data" => $data
+            "data" => $data ?? null
         ]);
     }
 }
