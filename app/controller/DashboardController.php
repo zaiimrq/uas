@@ -17,7 +17,7 @@ class DashboardController
     {
         $data = $this->mahasiswa->findAllMahasiswa();
         View::render("Dashboard/index", [
-            "title" => "| DNS",
+            "title" => "Dashboard | DNS",
             "data" => $data
         ]);
     }
@@ -28,7 +28,7 @@ class DashboardController
         $option = ['A', 'B', 'C', 'D', 'E'];
 
         View::render("Dashboard/input", [
-            "title" => "| Input Nilai",
+            "title" => "Dashboard | Input Nilai",
             "data" => $data,
             "option" => $option
         ]);

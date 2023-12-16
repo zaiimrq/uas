@@ -16,13 +16,9 @@ class HomeController
     }
     public function index()
     {
-        View::render("Home/index");
-    }
-    public function search()
-    {
-        $data = $this->model->findDns($_POST);
+        $data = $this->model->findDns($_GET['search'] ?? '');
         View::render("Home/index", [
-            "title" => "| DNS",
+            "title" => "Home | Search DNS Online",
             "data" => $data
         ]);
     }

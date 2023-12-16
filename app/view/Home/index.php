@@ -8,9 +8,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <form action="<?= BASEURL ?>/home/search?npm=<?= $mhs["npm"]; ?>" method="GET">
+                <form action="<?= BASEURL ?>" method="GET">
                     <div class="input-group">
-                        <input type="text" name="search" class="form-control" placeholder="Masukkan NPM">
+                        <input type="text" name="search" value="<?= $_GET["search"] ?? false ?>" class="form-control" placeholder="Masukkan NPM">
                         <button type="submit" class="btn btn-warning">Cari</button>
                     </div>
                 </form>
@@ -20,126 +20,79 @@
 </div>
 
 <!-- Bagian DNS (Data Mahasiswa) -->
-<div class="dns-section">
-    <div class="container">
-        <h2>DAFTAR NILAI SEMESTER (DNS)</h2>
-        <p>TAHUN AKADEMIK : 2023 - GANJIL</p>
-        <p>JENJANG : STRATA - 1</p>
-        <hr>
-        <b>
-            <p>NAMA MAHASISWA : AJENG KALISTA RAHMA</p>
-            <p>N.P.M : 22641004</p>
-        </b>
+<?php if (isset($_GET["search"])) : ?>
+    <?php if ($model['data'] !== null) : ?>
+        <div class="dns-section">
+            <div class="container">
+                <h2>DAFTAR NILAI SEMESTER (DNS)</h2>
+                <p>TAHUN AKADEMIK : 2023 - GANJIL</p>
+                <p>JENJANG : STRATA - 1</p>
+                <hr>
+                <b>
+                    <p>NAMA MAHASISWA : <?= $model["data"][0]["nama"] ?></p>
+                    <p>N.P.M : <?= $model['data'][0]["npm"] ?></p>
+                </b>
 
-        <!-- Tabel DNS -->
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>NO</th>
-                        <th>KODE M.K</th>
-                        <th>NAMA MATAKULIAH</th>
-                        <th>SKS</th>
-                        <th>N.A</th>
-                        <th>KET</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>IF1101</td>
-                        <td>PEMROGRAMAN BERORIENTASI OBJEK/td>
-                        <td>3</td>
-                        <td>A</td>
-                        <td>L</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>IF1102</td>
-                        <td>ALJABAR LINIER</td>
-                        <td>3</td>
-                        <td>A</td>
-                        <td>L</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>IF1101</td>
-                        <td>MATEMATIKA DISKRIT</td>
-                        <td>3</td>
-                        <td>A</td>
-                        <td>L</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>IF1101</td>
-                        <td>TEORI BAHASA DAN AUTOMATA</td>
-                        <td>2</td>
-                        <td>A</td>
-                        <td>L</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>UN2310</td>
-                        <td>EKONOMI SYARIAH</td>
-                        <td>3</td>
-                        <td>A</td>
-                        <td>L</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>IF1101</td>
-                        <td>DESAIN GRAFIS DAN MULTIMEDIA</td>
-                        <td>3</td>
-                        <td>A</td>
-                        <td>L</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>IF1101</td>
-                        <td>PRAKTIKUM PEMROGRAMAN BERORIENTASI OBJEK</td>
-                        <td>1</td>
-                        <td>A</td>
-                        <td>L</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>IF1101</td>
-                        <td>PRAKTIKUM DESAIN GRAFIS DAN MULTIMEDIA</td>
-                        <td>1</td>
-                        <td>A</td>
-                        <td>L</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
 
-        <!-- Tabel SKS -->
-        <p>Total SKS Kelulusan : 144 SKS</p>
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>SKS DIAMBIL</th>
-                        <th>SKS DIPEROLEH</th>
-                        <th>IP.S</th>
-                        <th>TOTAL SKS DIPEROLEH</th>
-                        <th>IP.K</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>21</td>
-                        <td>21</td>
-                        <td>4.00</td>
-                        <td>40</td>
-                        <td>4.00</td>
-                    </tr>
-                </tbody>
-            </table>
+                <!-- Tabel DNS -->
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>NO</th>
+                                <th>KODE M.K</th>
+                                <th>NAMA MATAKULIAH</th>
+                                <th>SKS</th>
+                                <th>N.A</th>
+                                <th>KET</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($model['data'][1] as $data) : ?>
+                                <tr>
+                                    <td>1</td>
+                                    <td><?= $data['kode_mk'] ?></td>
+                                    <td><?= $data['nama_mk'] ?></td>
+                                    <td><?= $data['sks'] ?></td>
+                                    <td><?= $data['nilai'] ?></td>
+                                    <td><?= $data['status'] ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Tabel SKS -->
+                <p>Total SKS Kelulusan : 144 SKS</p>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>SKS DIAMBIL</th>
+                                <th>SKS DIPEROLEH</th>
+                                <th>IP.S</th>
+                                <th>TOTAL SKS DIPEROLEH</th>
+                                <th>IP.K</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><?= $model['data'][2]['total_sks'] ?></td>
+                                <td>21</td>
+                                <td>4.00</td>
+                                <td>40</td>
+                                <td>4.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>Beban SKS Semester Berikutnya : 24 SKS</p>
+            </div>
         </div>
-        <p>Beban SKS Semester Berikutnya : 24 SKS</p>
-    </div>
-</div>
+    <?php else : ?>
+        <h1 class="h1 pt-4 text-danger" style="text-align: center;">Data Tidak Ditemukan !</h1>
+    <?php endif; ?>
+<?php endif; ?>
 
 <!-- Features Section -->
 <div class="features">
