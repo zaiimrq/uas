@@ -1,5 +1,6 @@
 <?php
 
+use Tugas\core\Flasher;
 use Tugas\core\Route; ?>
 
 
@@ -9,6 +10,7 @@ use Tugas\core\Route; ?>
 
 <!-- DataTables JavaScript -->
 <script src="<?= BASEURL ?>/assets/js/dataTable.min.js"></script>
+<script src="<?= BASEURL ?>/assets/js/sweetalert2.all.min.js"></script>
 
 
 <?php if (Route::is("/dashboard")) : ?>
@@ -17,6 +19,9 @@ use Tugas\core\Route; ?>
          $('#tbldns').DataTable();
       });
    </script>
+<?php endif; ?>
+<?php if (Route::is("/dashboard/lihat")) : ?>
+   <?php Flasher::flash() ?? false ?>
 <?php endif; ?>
 </body>
 

@@ -2,6 +2,7 @@
 
 namespace Tugas\controller;
 
+use Tugas\core\Flasher;
 use Tugas\core\View;
 use Tugas\model\Mahasiswa;
 
@@ -54,6 +55,7 @@ class DashboardController
     public function lihatDelete()
     {
         if ($this->mahasiswa->lihatDelete($_GET)) {
+            Flasher::setFlash("Good luck!", "Data berhasil dihapus :)", "success");
             View::redirect("/dashboard/lihat?npm=" . $_GET["npm"]);
         }
     }

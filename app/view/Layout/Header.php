@@ -15,6 +15,7 @@ use Tugas\core\Route; ?>
     <!-- DataTables CSS -->
     <link rel="stylesheet" type="text/css" href="<?= BASEURL ?>/assets/css/jquery.dataTables.css">
     <link rel="stylesheet" href="<?= BASEURL ?>/assets/css/style.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>/assets/css/sweetalert2.min.css">
     <style>
         .tabel-container,
         .nilai-container {
