@@ -85,11 +85,6 @@ class Mahasiswa
                 $statement = $this->pdo->prepare("SELECT tb_matkul.kode_mk, tb_matkul.nama_mk, tb_matkul.sks, tb_dns.nilai, CASE WHEN nilai IN ('A', 'B', 'C', 'D') THEN 'L' WHEN nilai = 'E' THEN 'TL' ELSE '' END AS status FROM tb_matkul LEFT JOIN tb_dns ON tb_dns.kode_mk = tb_matkul.kode_mk JOIN tb_mhs ON tb_mhs.npm = ? WHERE tb_matkul.kode_jurusan = tb_mhs.kode_jurusan");
                 $statement->execute([$npm]);
 
-                $sks = $this->pdo->prepare("SELECT SUM(tb_matkul.sks) as total_sks FROM tb_matkul JOIN tb_mhs ON tb_matkul.kode_jurusan = tb_mhs.kode_jurusan WHERE tb_mhs.npm = ?");
-                $sks->execute([$npm]);
-
-                $total_sks =  $sks->fetch(PDO::FETCH_ASSOC);
-
                 $this->pdo->commit();
                 if ($dns = $statement->fetchAll(PDO::FETCH_ASSOC)) {
 
@@ -97,7 +92,6 @@ class Mahasiswa
                     return [
                         $mhs,
                         $dns,
-                        $total_sks
                     ];
                 }
             } else {
@@ -106,5 +100,14 @@ class Mahasiswa
         } finally {
             $statement->closeCursor();
         }
+    }
+
+    public function lihatDelete(array $data)
+    {
+        $statement = $this->pdo->prepare("DELETE FROM tb_dns WHERE npm = ? AND kode_mk = ?");
+        return $statement->execute([
+            $data['npm'],
+            $data['mk']
+        ]);
     }
 }

@@ -21,7 +21,7 @@
 </div>
 
 <!-- Bagian DNS (Data Mahasiswa) -->
-<?php if (isset($_GET["search"])) : ?>
+<?php if (isset($_GET["search"]) && $_GET["search"] !== '') : ?>
     <?php if ($model['data'] !== null) : ?>
         <div class="dns-section">
             <div class="container">
@@ -49,9 +49,10 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $i = 1; ?>
                             <?php foreach ($model['data'][1] as $data) : ?>
                                 <tr>
-                                    <td>1</td>
+                                    <td><?= $i++ ?></td>
                                     <td><?= $data['kode_mk'] ?></td>
                                     <td><?= $data['nama_mk'] ?></td>
                                     <td><?= $data['sks'] ?></td>
@@ -79,10 +80,10 @@
                         <tbody>
                             <tr>
                                 <td><?= $model['data'][2]['total_sks'] ?></td>
-                                <td>21</td>
-                                <td>4.00</td>
-                                <td>40</td>
-                                <td>4.00</td>
+                                <td><?= $model['data'][2]['total_sks'] ?></td>
+                                <td><?= $model['data'][3]['ips'] ?></td>
+                                <td><?= $model['data'][2]['total_sks'] ?></td>
+                                <td><?= $model['data'][3]['ips'] ?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -93,6 +94,7 @@
     <?php else : ?>
         <h1 class="h1 pt-4 text-danger" style="text-align: center;">Data Tidak Ditemukan !</h1>
     <?php endif; ?>
+
 <?php endif; ?>
 
 <!-- Features Section -->

@@ -33,13 +33,20 @@ class Home
 
                 $total_sks =  $sks->fetch(PDO::FETCH_ASSOC);
 
+                $sks_nilai = $this->pdo->prepare("SELECT tb_matkul.sks * CASE WHEN tb_dns.nilai = 'A' THEN 4 WHEN tb_dns.nilai = 'B' THEN 3 WHEN tb_dns.nilai = 'C' THEN 2 WHEN tb_dns.nilai = 'D' THEN 1 ELSE 0 END AS sks_nilai FROM tb_dns JOIN tb_matkul ON tb_dns.kode_mk = tb_matkul.kode_mk WHERE tb_dns.npm = ? ");
+
+                $sks_nilai->execute([$npm]);
+
+                $sks_nilai = $sks_nilai->fetchAll(PDO::FETCH_ASSOC);
+
                 $this->pdo->commit();
                 if ($dns = $statement->fetchAll(PDO::FETCH_ASSOC)) {
 
                     return [
                         $mhs,
                         $dns,
-                        $total_sks
+                        $total_sks,
+                        $sks_nilai
                     ];
                 }
             } else {

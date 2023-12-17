@@ -36,12 +36,13 @@ class DashboardController
 
     public function doInput()
     {
+        var_dump($_POST);
 
-        $doInput = $this->mahasiswa->inputNilai($_GET['npm'], $_POST);
+        // $doInput = $this->mahasiswa->inputNilai($_GET['npm'], $_POST);
 
-        if ($doInput) {
-            View::redirect("/dashboard/lihat?npm=" . $_GET["npm"]);
-        }
+        // if ($doInput) {
+        //     View::redirect("/dashboard/lihat?npm=" . $_GET["npm"]);
+        // }
     }
 
     public function lihat()
@@ -52,5 +53,12 @@ class DashboardController
             "title" => "Dashboard | Lihat Nilai",
             "data" => $data
         ]);
+    }
+
+    public function lihatDelete()
+    {
+        if ($this->mahasiswa->lihatDelete($_GET)) {
+            View::redirect("/dashboard/lihat?npm=" . $_GET["npm"]);
+        }
     }
 }

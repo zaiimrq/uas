@@ -18,7 +18,14 @@ class HomeController
     {
         if (isset($_GET["search"]) && $_GET["search"] !== '') {
             $data = $this->model->findDns($_GET['search']);
+
+            foreach ($data[3] as $item) {
+                $sks_nilai[] = $item['sks_nilai'];
+                unset($data[3]);
+                $data[3]['ips'] = array_sum($sks_nilai) / $data[2]['total_sks'];
+            }
         }
+
         View::render("Home/index", [
             "title" => "Home | Search DNS Online",
             "data" => $data ?? null

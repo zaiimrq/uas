@@ -1,5 +1,10 @@
 <div class="lihat-container">
-
+	<style>
+		.breadcrumb li a {
+			text-decoration: none;
+			font-size: large;
+		}
+	</style>
 	<ol class="breadcrumb">
 		<li><a href="<?= BASEURL ?>/dashboard">Dashboard</a> / </li>
 		<li class="active">View DNS</li>
@@ -37,8 +42,10 @@
 					</thead>
 					<tbody>
 						<?php $i = 1; ?>
+						<?php $status = false ?>
 						<?php foreach ($model['data'][1] as $data) : ?>
 							<?php if ($data['nilai'] !== null) : ?>
+								<?php $status = true ?>
 
 								<tr>
 
@@ -49,18 +56,18 @@
 									<td><?= $data["nilai"] ?></td>
 									<td><?= $data["status"] ?></td>
 									<td><button class="btn btn-warning"><img src="<?= BASEURL ?>/assets/image/edit.png" style="width:20px;height:auto;"></button></td>
-									<td><button class="btn btn-danger"><img src="<?= BASEURL ?>/assets/image/delete.png" style="width:20px;height:auto;"></button></td>
+									<td><a href="<?= BASEURL ?>/dashboard/lihat/delete?npm=<?= $_GET["npm"] ?>&mk=<?= $data['kode_mk'] ?>" class="btn btn-danger"><img src="<?= BASEURL ?>/assets/image/delete.png" style="width:20px;height:auto;"></a></td>
 								</tr>
-							<?php else : ?>
-								<tr>
-									<td colspan="8">Tidak Ada Data Ditemukan</td>
-								</tr>
-							<?php
-								break;
-							endif;
-							?>
+
+							<?php endif; ?>
 
 						<?php endforeach; ?>
+						<?php if (!$status) : ?>
+							<tr>
+								<td colspan="8">Tidak Ada Data Ditemukan</td>
+							</tr>
+						<?php endif ?>
+
 					</tbody>
 				</table>
 

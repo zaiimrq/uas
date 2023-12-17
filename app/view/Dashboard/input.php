@@ -1,7 +1,13 @@
 <div class="nilai-container">
-
+	<style>
+		.breadcrumb li a {
+			text-decoration: none;
+			font-size: large;
+		}
+	</style>
 	<ol class="breadcrumb">
-		<li><a href="<?= BASEURL ?>/dashboard">Dashboard</a> / </li>
+		<li><a href="<?= BASEURL ?>/dashboard">Dashboard</a> /</li>
+		<li class="active"><a href="<?= BASEURL ?>/dashboard/lihat?npm=<?= $_GET["npm"] ?>">View DNS</a> /</li>
 		<li class="active">Input Nilai</li>
 	</ol>
 
