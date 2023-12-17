@@ -11,7 +11,7 @@
             <div class="col-md-6">
                 <form action="<?= BASEURL ?>" method="GET">
                     <div class="input-group">
-                        <input type="text" name="search" value="<?= $_GET["search"] ?? false ?>" class="form-control" placeholder="Masukkan NPM">
+                        <input type="text" pattern="[0-9]*" inputmode="numeric" title="Input hanya boleh angka" name="search" value="<?= $_GET["search"] ?? false ?>" class="form-control" placeholder="Masukkan NPM">
                         <button type="submit" class="btn btn-warning">Cari</button>
                     </div>
                 </form>
@@ -56,7 +56,7 @@
                                     <td><?= $data['kode_mk'] ?></td>
                                     <td><?= $data['nama_mk'] ?></td>
                                     <td><?= $data['sks'] ?></td>
-                                    <td><?= $data['nilai'] ?></td>
+                                    <td><?= $data['nilai'] ?? '-' ?></td>
                                     <td><?= $data['status'] ?></td>
                                 </tr>
                             <?php endforeach; ?>
@@ -81,9 +81,9 @@
                             <tr>
                                 <td><?= $model['data'][2]['total_sks'] ?></td>
                                 <td><?= $model['data'][2]['total_sks'] ?></td>
-                                <td><?= $model['data'][3]['ips'] ?></td>
+                                <td><?= $model['data'][3]['ips'] ?? '-' ?></td>
                                 <td><?= $model['data'][2]['total_sks'] ?></td>
-                                <td><?= $model['data'][3]['ips'] ?></td>
+                                <td><?= $model['data'][3]['ips'] ?? '-' ?></td>
                             </tr>
                         </tbody>
                     </table>

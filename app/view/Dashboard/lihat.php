@@ -55,8 +55,8 @@
 									<td><?= $data["sks"] ?></td>
 									<td><?= $data["nilai"] ?></td>
 									<td><?= $data["status"] ?></td>
-									<td><button class="btn btn-warning"><img src="<?= BASEURL ?>/assets/image/edit.png" style="width:20px;height:auto;"></button></td>
-									<td onclick="deleteConfirm()" class="delete"><a href="<?= BASEURL ?>/dashboard/lihat/delete?npm=<?= $_GET["npm"] ?>&mk=<?= $data['kode_mk'] ?>" class="btn btn-danger"><img src="<?= BASEURL ?>/assets/image/delete.png" style="width:20px;height:auto;"></a></td>
+									<td><button class="btn btn-warning"><img src="<?= BASEURL ?>/assets/image/edit.webp" style="width:20px;height:auto;"></button></td>
+									<td class="delete"><a href="<?= BASEURL ?>/dashboard/lihat/delete?npm=<?= $_GET["npm"] ?>&mk=<?= $data['kode_mk'] ?>" class="btn btn-danger"><img src="<?= BASEURL ?>/assets/image/delete.webp" style="width:20px;height:auto;"></a></td>
 								</tr>
 
 							<?php endif; ?>
