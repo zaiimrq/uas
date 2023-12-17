@@ -39,6 +39,7 @@ class DashboardController
     {
 
         $this->mahasiswa->inputNilai($_GET['npm'], $_POST);
+        Flasher::setFlash("Selamat!", "Data berhasil diinput :)", "success");
         View::redirect("/dashboard/lihat?npm=" . $_GET["npm"]);
     }
 
@@ -55,8 +56,26 @@ class DashboardController
     public function lihatDelete()
     {
         if ($this->mahasiswa->lihatDelete($_GET)) {
-            Flasher::setFlash("Good luck!", "Data berhasil dihapus :)", "success");
+            Flasher::setFlash("Selamat!", "Data berhasil dihapus :)", "success");
             View::redirect("/dashboard/lihat?npm=" . $_GET["npm"]);
         }
+    }
+    
+    public function lihatUpdate()
+    {
+        $data = $this->mahasiswa->lihatUpdate($_GET);
+
+        View::render("Dashboard/input", [
+            "title" => "Dashboard | Input Nilai",
+            "data" => $data,
+        ]); 
+    }
+
+    public function doupdate()
+    {
+
+        $this->mahasiswa->doupdate($_GET['npm'], $_POST);
+        Flasher::setFlash("Selamat!", "Data berhasil diubah :)", "success");
+        View::redirect("/dashboard/lihat?npm=" . $_GET["npm"]);
     }
 }
