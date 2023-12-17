@@ -36,13 +36,9 @@ class DashboardController
 
     public function doInput()
     {
-        var_dump($_POST);
 
-        // $doInput = $this->mahasiswa->inputNilai($_GET['npm'], $_POST);
-
-        // if ($doInput) {
-        //     View::redirect("/dashboard/lihat?npm=" . $_GET["npm"]);
-        // }
+        $this->mahasiswa->inputNilai($_GET['npm'], $_POST);
+        View::redirect("/dashboard/lihat?npm=" . $_GET["npm"]);
     }
 
     public function lihat()

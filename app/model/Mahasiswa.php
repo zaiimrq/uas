@@ -36,17 +36,21 @@ class Mahasiswa
 
         try {
 
-            $query = "SELECT tb_matkul.kode_mk, tb_matkul.nama_mk, tb_matkul.sks, tb_dns.nilai,
+            $query = "SELECT tb_matkul.kode_mk, tb_matkul.nama_mk, tb_matkul.sks, tb_dns.nilai, 
                         CASE 
                             WHEN nilai IN ('A', 'B', 'C') THEN 'Lulus'
                             WHEN nilai = 'D' THEN 'Mengulang'
                             WHEN nilai = 'E' THEN 'Tidak Lulus'
                         END AS status
                         FROM tb_matkul LEFT JOIN tb_dns ON tb_matkul.kode_mk = tb_dns.kode_mk
-                        WHERE tb_matkul.kode_jurusan = ?";
+                                            JOIN tb_mhs ON tb_mhs.kode_jurusan = tb_matkul.kode_jurusan
+                        WHERE tb_matkul.kode_jurusan = ? AND tb_mhs.npm = ?";
 
             $statement = $this->pdo->prepare($query);
-            $statement->execute([$data["jurusan"]]);
+            $statement->execute([
+                $data["jurusan"],
+                $data["npm"]
+            ]);
             return $statement->fetchAll(PDO::FETCH_ASSOC) ?? null;
         } finally {
             $statement->closeCursor();
