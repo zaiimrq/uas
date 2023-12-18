@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 14, 2023 at 10:45 PM
+-- Generation Time: Dec 18, 2023 at 12:57 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -60,7 +60,8 @@ INSERT INTO `tb_jurusan` (`kode_jurusan`, `nama_jurusan`) VALUES
 (15201, 'Pendidikan Agama Islam'),
 (15202, 'Pendidikan Guru Sekolah Dasar'),
 (24001, 'Teknik Sipil'),
-(24002, 'Arsitek'),
+(24002, 'Arsitektur'),
+(29300, 'Umum'),
 (32101, 'Manajemen'),
 (32102, 'Akuntansi'),
 (41001, 'Hukum'),
@@ -88,30 +89,68 @@ CREATE TABLE `tb_matkul` (
 --
 
 INSERT INTO `tb_matkul` (`kode_mk`, `kode_jurusan`, `nama_mk`, `sks`) VALUES
+('AD204', 62101, 'Manajemen Publik', 3),
 ('AD272', 62101, 'Administrasi Pembangunan', 2),
+('AD349', 62101, 'Kebijakan Publik', 2),
+('AD466', 62101, 'Pengembangan Sumber Daya Manusia di Sektor Publik', 3),
 ('AD729', 62101, 'Teori Organisasi', 3),
+('AD736', 62101, 'Etika Administrasi Publik', 3),
 ('AK405', 32102, 'Akuntansi Keuangan', 3),
 ('AK407', 32102, 'Dasar Perpajakan', 2),
+('AR055', 24002, 'Arsitektur Lansekap', 3),
+('AR294', 24002, 'Desain Arsitektur', 2),
+('AR305', 24002, 'Teknologi Konstruksi', 3),
+('AR367', 24002, 'Arsitektur Perkotaan', 2),
 ('AR609', 24002, 'Arsitektur Lingkungan', 3),
 ('AR678', 24002, 'Tata Ruang', 2),
 ('HK809', 41001, 'Pengantar Hukum', 3),
 ('HK810', 41001, 'Hukum Perdata', 3),
 ('IF001', 59012, 'Pemrograman Berorientasi Objek', 3),
 ('IF002', 59012, 'Praktikum Pemrograman Berorientasi Objek', 1),
+('IF042', 59012, 'Aljabar Linear', 3),
+('IF203', 59012, 'Desain Grafis dan Multimedia', 3),
+('IF283', 59012, 'Praktikum Pemrograman Berorientasi Objek', 1),
+('IF890', 59012, 'Statistika dan Probabilitas', 3),
+('IF934', 59012, 'Teori Bahasa dan Automata', 3),
+('IK142', 62103, 'Biologi Perikanan', 3),
+('IK394', 62103, 'Oseanografi Perikanan', 2),
+('IK900', 62103, 'Ekonomi Perikanan', 3),
 ('IP001', 62102, 'Statistik Sosial', 3),
 ('IP028', 62102, 'Sistem Hukum Indonesia', 2),
+('IP239', 62102, 'Kebijakan Publik', 3),
+('IP274', 62102, 'Politik Indonesia', 2),
+('IP835', 62102, 'Ekonomi Politik', 2),
+('IP949', 62102, 'Teori Pemerintahan', 3),
 ('MJ101', 32101, 'Pengantar Manajemen', 3),
+('MJ102', 32101, 'Manajemen Operasional', 2),
 ('MJ103', 32101, 'Pemasaran', 2),
+('MJ283', 32101, 'Manajemen Sumber Daya Manusia', 3),
+('MJ294', 32101, 'Pemasaran', 2),
+('MJ920', 32101, 'Manajemen Strategis', 2),
+('PA038', 15201, 'Aqidah dan Akhlak', 3),
+('PA893', 15201, 'Pendidikan Islam Kontemporer', 3),
+('PG049', 15202, 'Metode Pembelajaran SD', 2),
 ('PG289', 15202, 'Teori Belajar', 2),
+('PG495', 15202, 'Pengembangan Kurikulum SD', 3),
 ('PG729', 15202, 'Psikologi Pendidikan', 3),
+('PG930', 15202, 'Evaluasi Pendidikan Anak', 3),
 ('PI629', 15201, 'Sejarah Pendidikan Agama Islam', 3),
 ('PI719', 15201, 'Masail Fiqhiyah', 2),
 ('PK273', 62103, 'Ekologi Perairan', 2),
 ('PK283', 62103, 'Teknologi Hasil Perikanan', 3),
 ('SI201', 59011, 'Pemrograman Visual', 3),
 ('SI202', 59011, 'Matematika Diskrit', 2),
+('SI245', 59011, 'Manajemen Basis Data', 3),
+('SI293', 59011, 'Analisis Sistem Informasi', 2),
+('SI294', 59011, 'Keamanan Sistem Informasi', 3),
+('SI308', 59011, 'Pengembangan Aplikasi Berbasis Web', 2),
 ('TS317', 24001, 'Geoteknik', 2),
-('TS390', 24001, 'Struktur Bangunan', 3);
+('TS390', 24001, 'Struktur Bangunan', 3),
+('TS837', 24001, 'Teknik Struktur', 3),
+('TS839', 24001, 'Manajemen Proyek Konstruksi', 3),
+('TS848', 24001, 'Teknik Transportasi', 2),
+('UN007', 29300, 'Ekonomi Syariah', 2),
+('UN028', 29300, 'Bahasa Indonesia', 3);
 
 -- --------------------------------------------------------
 
@@ -130,10 +169,14 @@ CREATE TABLE `tb_mhs` (
 --
 
 INSERT INTO `tb_mhs` (`npm`, `nama`, `kode_jurusan`) VALUES
-(22024011, 'Cyntha Alma', 24001),
+(23890, 'Fatur Putra', 62101),
+(178909, 'Zayn Malik', 41001),
+(200311, 'Almaira', 32102),
+(280591, 'Rizkina Aulia', 24002),
+(22024011, 'Cyntha Alma', 15201),
 (22611045, 'Andini Putri', 32101),
 (22621023, 'Azzahra Nurul Syafirah', 24001),
-(22631007, 'Galaksi Aldebaran', 24001),
+(22631007, 'Galaksi Aldebaran', 59011),
 (22641001, 'Shariful Zaidin', 59012),
 (22650038, 'Vino G Bastian', 62102);
 
@@ -177,7 +220,7 @@ ALTER TABLE `tb_mhs`
 -- AUTO_INCREMENT for table `tb_dns`
 --
 ALTER TABLE `tb_dns`
-  MODIFY `id_dns` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_dns` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tb_mhs`

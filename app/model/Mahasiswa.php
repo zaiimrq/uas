@@ -44,7 +44,7 @@ class Mahasiswa
                         END AS status
                         FROM tb_matkul LEFT JOIN tb_dns ON tb_matkul.kode_mk = tb_dns.kode_mk
                                             JOIN tb_mhs ON tb_mhs.kode_jurusan = tb_matkul.kode_jurusan
-                        WHERE tb_matkul.kode_jurusan = ? AND tb_mhs.npm = ?";
+                        WHERE (tb_matkul.kode_jurusan = 29300 OR tb_matkul.kode_jurusan = ?) AND tb_mhs.npm = ?";
 
             $statement = $this->pdo->prepare($query);
             $statement->execute([
