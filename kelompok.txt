@@ -1,6 +1,6 @@
 
 -- Description --
-Aplikasi penilaian mahasiswa, dibuat tanpa framework. 
+Aplikasi penilaian semester mahasiswa, dibuat tanpa framework. 
 Menerapkan konsep PBO dan MVC.
 Konfigurasi database ada di file database.php didalam folder config
 
@@ -18,7 +18,7 @@ dbpass :
 
 
 -- Kelompok --
-1. Ajeng Kalista Rahma      
-2. Claudia Putri Muwa       
+1. Ajeng Kalista Rahma      22641004
+2. Maria Claudia Putri Muwa 22641016      
 3. Slamet Shariful Zaidin   22641001
 4. Farhan Aritama           22641005
