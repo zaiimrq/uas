@@ -25,6 +25,10 @@ class DashboardController
 
     public function input()
     {
+        if (!(isset($_GET["npm"]) && $_GET["npm"] !== '') || !(isset($_GET["jurusan"]) && $_GET["jurusan"] !== '')) {
+            View::redirect("/");
+            exit;
+        }
         $data = $this->mahasiswa->input($_GET);
         $option = ['A', 'B', 'C', 'D', 'E'];
 
@@ -45,6 +49,10 @@ class DashboardController
 
     public function lihat()
     {
+        if (!(isset($_GET["npm"]) && $_GET["npm"] !== '')) {
+            View::redirect("/");
+            exit;
+        }
         $data = $this->mahasiswa->lihat($_GET['npm']);
 
         View::render("dashboard/lihat", [
