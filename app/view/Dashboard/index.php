@@ -1,5 +1,5 @@
 <div class="tabel-container">
-<button class="btn btn-warning "><a style="text-decoration:none; color:black;" href="<?= BASEURL ?>">Home</a></button>
+	<button class="btn btn-warning mb-3"><a style="text-decoration:none; color:black;" href="<?= BASEURL ?>">Home</a></button>
 	<h3>Data Nilai Mahasiswa</h3>
 	<table id="tbldns" class="table table-striped table-bordered" cellspacing="0">
 		<thead>

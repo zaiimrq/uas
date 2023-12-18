@@ -81,9 +81,9 @@
                             <tr>
                                 <td><?= $model['data'][2]['total_sks'] ?></td>
                                 <td><?= $model['data'][2]['total_sks'] ?></td>
-                                <td><?= $model['data'][3]['ips'] ?? '-' ?></td>
+                                <td><?= number_format($model['data'][3]['ips'], 2) ?? '-' ?></td>
                                 <td><?= $model['data'][2]['total_sks'] ?></td>
-                                <td><?= $model['data'][3]['ips'] ?? '-' ?></td>
+                                <td><?= number_format($model['data'][3]['ips'], 2) ?? '-' ?></td>
                             </tr>
                         </tbody>
                     </table>

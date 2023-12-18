@@ -19,7 +19,7 @@ class Mahasiswa
         try {
             $statement = $this->pdo->prepare("SELECT tb_mhs.npm, tb_mhs.nama, tb_mhs.kode_jurusan, tb_jurusan.nama_jurusan AS jurusan
                                                 FROM tb_mhs
-                                                JOIN tb_jurusan ON tb_mhs.kode_jurusan = tb_jurusan.kode_jurusan");
+                                                JOIN tb_jurusan ON tb_mhs.kode_jurusan = tb_jurusan.kode_jurusan ORDER BY tb_mhs.npm DESC");
             $statement->execute();
 
             if ($row = $statement->fetchAll()) {
@@ -44,7 +44,7 @@ class Mahasiswa
                         END AS status
                         FROM tb_matkul LEFT JOIN tb_dns ON tb_matkul.kode_mk = tb_dns.kode_mk
                                             JOIN tb_mhs ON tb_mhs.kode_jurusan = tb_matkul.kode_jurusan
-                        WHERE (tb_matkul.kode_jurusan = 29300 OR tb_matkul.kode_jurusan = ?) AND tb_mhs.npm = ?";
+                        WHERE tb_matkul.kode_jurusan = ? AND tb_mhs.npm = ?";
 
             $statement = $this->pdo->prepare($query);
             $statement->execute([

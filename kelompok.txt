@@ -14,7 +14,13 @@ c. Database collation utf8mb4_0900_ai_c
 dbhost : localhost
 dbname : db_dns
 dbuser : root
-dbpass : 
+dbpass :
+
+-- Penggunaan Aplikasi --
+a. Searching DNS online berdasarkan npm
+b. npm terdapat dimenu dashboard
+c. secara default menu view nilai adalah kosong
+d. lakukan input nilai
 
 
 -- Kelompok --

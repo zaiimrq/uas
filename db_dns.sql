@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 18, 2023 at 12:57 PM
+-- Generation Time: Dec 18, 2023 at 02:11 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -38,8 +38,6 @@ CREATE TABLE `tb_dns` (
 -- Dumping data for table `tb_dns`
 --
 
-INSERT INTO `tb_dns` (`id_dns`, `npm`, `kode_mk`, `nilai`) VALUES
-(13, 22641001, 'IF001', 'A');
 
 -- --------------------------------------------------------
 
@@ -61,7 +59,6 @@ INSERT INTO `tb_jurusan` (`kode_jurusan`, `nama_jurusan`) VALUES
 (15202, 'Pendidikan Guru Sekolah Dasar'),
 (24001, 'Teknik Sipil'),
 (24002, 'Arsitektur'),
-(29300, 'Umum'),
 (32101, 'Manajemen'),
 (32102, 'Akuntansi'),
 (41001, 'Hukum'),
@@ -148,9 +145,7 @@ INSERT INTO `tb_matkul` (`kode_mk`, `kode_jurusan`, `nama_mk`, `sks`) VALUES
 ('TS390', 24001, 'Struktur Bangunan', 3),
 ('TS837', 24001, 'Teknik Struktur', 3),
 ('TS839', 24001, 'Manajemen Proyek Konstruksi', 3),
-('TS848', 24001, 'Teknik Transportasi', 2),
-('UN007', 29300, 'Ekonomi Syariah', 2),
-('UN028', 29300, 'Bahasa Indonesia', 3);
+('TS848', 24001, 'Teknik Transportasi', 2);
 
 -- --------------------------------------------------------
 
@@ -169,16 +164,16 @@ CREATE TABLE `tb_mhs` (
 --
 
 INSERT INTO `tb_mhs` (`npm`, `nama`, `kode_jurusan`) VALUES
-(23890, 'Fatur Putra', 62101),
-(178909, 'Zayn Malik', 41001),
-(200311, 'Almaira', 32102),
-(280591, 'Rizkina Aulia', 24002),
+(17890986, 'Zayn Malik', 41001),
+(20031154, 'Almaira', 32102),
 (22024011, 'Cyntha Alma', 15201),
 (22611045, 'Andini Putri', 32101),
 (22621023, 'Azzahra Nurul Syafirah', 24001),
 (22631007, 'Galaksi Aldebaran', 59011),
 (22641001, 'Shariful Zaidin', 59012),
-(22650038, 'Vino G Bastian', 62102);
+(22650038, 'Vino G Bastian', 62102),
+(23896987, 'Fatur Putra', 62101),
+(28059176, 'Rizkina Aulia', 24002);
 
 --
 -- Indexes for dumped tables
@@ -220,13 +215,13 @@ ALTER TABLE `tb_mhs`
 -- AUTO_INCREMENT for table `tb_dns`
 --
 ALTER TABLE `tb_dns`
-  MODIFY `id_dns` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_dns` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `tb_mhs`
 --
 ALTER TABLE `tb_mhs`
-  MODIFY `npm` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=226310079;
+  MODIFY `npm` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=280591768;
 
 --
 -- Constraints for dumped tables
