@@ -1,11 +1,19 @@
 
 -- Description --
 Aplikasi penilaian mahasiswa, dibuat tanpa framework namun menerapkan konsep MVC.
+Konfigurasi database ada di file database.php didalam folder config
 
 -- Spesifikasi --
 a. PHP 8.1
 b. Koneksi database menggunakan PDO
 c. Database collation utf8mb4_0900_ai_c
+
+-- Database Configuration --
+dbhost : localhost
+dbname : db_dns
+dbuser : root
+dbpass : 
+
 
 -- Kelompok --
 1. Ajeng Kalista Rahma      

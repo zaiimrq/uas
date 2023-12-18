@@ -56,25 +56,22 @@ class DashboardController
     public function lihatDelete()
     {
         if ($this->mahasiswa->lihatDelete($_GET)) {
-            Flasher::setFlash("Selamat!", "Data berhasil dihapus :)", "success");
             View::redirect("/dashboard/lihat?npm=" . $_GET["npm"]);
         }
     }
-    
+
     public function lihatUpdate()
     {
         $data = $this->mahasiswa->lihatUpdate($_GET);
 
-        View::render("Dashboard/input", [
-            "title" => "Dashboard | Input Nilai",
-            "data" => $data,
-        ]); 
+        print json_encode($data);
     }
 
-    public function doupdate()
+    public function doUpdate()
     {
 
-        $this->mahasiswa->doupdate($_GET['npm'], $_POST);
+
+        $this->mahasiswa->doUpdate($_GET, $_POST["nilai"]);
         Flasher::setFlash("Selamat!", "Data berhasil diubah :)", "success");
         View::redirect("/dashboard/lihat?npm=" . $_GET["npm"]);
     }

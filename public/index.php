@@ -21,5 +21,5 @@ Route::add("GET", "/dashboard/input/status", [DashboardController::class, 'check
 Route::add("GET", "/dashboard/lihat", [DashboardController::class, 'lihat']);
 Route::add("GET", "/dashboard/lihat/delete", [DashboardController::class, 'lihatDelete']);
 Route::add("GET", "/dashboard/lihat/update", [DashboardController::class, 'lihatUpdate']);
-Route::add("GET", "/dashboard/lihat/doupdate", [DashboardController::class, 'doupdate']);
+Route::add("POST", "/dashboard/lihat/update", [DashboardController::class, 'doUpdate']);
 Route::run();

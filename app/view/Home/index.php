@@ -1,7 +1,7 @@
 <!-- Header Section -->
 <div class="header text-center">
+    <button class="btn btn-warning mb-3"><a style="text-decoration:none; color:black;" href="<?= BASEURL ?>/dashboard">Dashboard Admin</a></button>
     <div class="container">
-        <button class="btn btn-warning "><a style="text-decoration:none; color:black;" href="<?= BASEURL ?>/dashboard">Dashboard Admin</a></button>
         <h1>Cek DNS Mahasiswa Online</h1>
         <p>Selamat datang Mahasiswa Universitas Yapis Papua !</p><br>
         <p>Masukkan NPM Anda untuk melihat Daftar Nilai Semester terkini</p>
