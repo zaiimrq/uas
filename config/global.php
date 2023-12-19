@@ -1,21 +1,13 @@
 <?php
 
+use Tugas\core\Route;
 
 
+$uri = $_SERVER["REQUEST_URI"];
+$uri = rtrim($uri, "/");
 
+if (!Route::is("/")) {
 
-$dic = explode("\\", __DIR__);
-array_pop($dic);
-$dic = end($dic);
-
-
-$uri = 'http://' . $_SERVER["HTTP_HOST"] . "/$dic";
-
-if ($_SERVER["HTTP_HOST"] == 'uas.test' || $_SERVER["SERVER_PORT"] !== "80") {
-
-    $uri = 'http://' . $_SERVER["HTTP_HOST"];
+    $uri = strstr($uri, "/dashboard", true);
 }
-
-
-
 define("BASEURL", $uri);
